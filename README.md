@@ -85,7 +85,7 @@ var result = XDB.Main.GetData<List<User>>("get_users", null, (error)
 Just put this code inside your stored procedure and return ERROR and DESCRIPTION fields.
 
 ```cs
-Select 1 AS ERROR, "user not found" AS DESCRIPTION;
+Select 1 AS ERROR, 'user not found' AS DESCRIPTION;
 ```
 	
 **Using Local Cache**
