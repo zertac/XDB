@@ -99,16 +99,14 @@ XDBConfigurator.CacheTimeout = 3; //minute
 	
 **1th Call** 
 ```cs
-var result = XDB.Main.GetData<User>("get_user"); // Data will
-```
-retrieve from database
+var result = XDB.Main.GetData<User>("get_user"); // Data will retrieve from database
 
+```
 
 **2th Call**
 ```cs
-var result = XDB.Main.GetData<User>("get_user"); // Data will
+var result = XDB.Main.GetData<User>("get_user"); // Data will retrieve from memory
 ```
-retrieve from memory
 
 **Flush Cache**
 ```cs
