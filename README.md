@@ -4,7 +4,7 @@
 
 **Installation :** Download project and add to your solution. Add as project reference to your project and start to use.
 
-**Requirements :** .Net Framework 6,  MySql.Data, # Newtonsoft.Json
+**Requirements :** .Net Framework 6,  MySql.Data, Newtonsoft.Json
 
     Install-Package MySql.Data -Version 8.0.30
 
