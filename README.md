@@ -13,9 +13,9 @@
 ## Usage
 
 **Configure Your Connection String**
-
+```cs
     XDB.XDBConfigurator.SetConnection("Server=xxx.xxx.xxx.xxx;Port=3306; Database=xxx;Uid=xxx;Pwd=xxxx;Connect Timeout=30;Pooling=True;CharSet=utf8;");
-
+```
 **Init Your Configurator** / **Load Queries**
 
     XDB.XDBConfigurator.Init(XDB.LoadType.PROCEDURE, "database_name");
