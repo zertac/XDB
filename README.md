@@ -17,10 +17,13 @@
     XDB.XDBConfigurator.SetConnection("Server=xxx.xxx.xxx.xxx;Port=3306; Database=xxx;Uid=xxx;Pwd=xxxx;Connect Timeout=30;Pooling=True;CharSet=utf8;");
 ```
 **Init Your Configurator** / **Load Queries**
-
+```cs
     XDB.XDBConfigurator.Init(XDB.LoadType.PROCEDURE, "database_name");
-    
+```
+or
+```cs
     XDB.XDBConfigurator.Init(XDB.LoadType.FOLDER, "database_name", "C:\\sql");
+```
 
 There is 2 options for load your queries into Configurator.
 
@@ -36,7 +39,7 @@ When you want retrieve data from database you have to pass <T> type parameter to
 **Example**
 
 **Return List Array**
-
+```cs
       public class User
       {
           public int Id { get;set;}
@@ -46,18 +49,19 @@ When you want retrieve data from database you have to pass <T> type parameter to
       }
 
     var result = XDB.Main.GetData<List<User>>("get_users");
-
+```
 or return Single Row
-
+```cs
     var result = XDB.Main.GetData<User>("get_user");
-
+```
 call with parameters
-
+```cs
     var paramters = new Dictionary(string,object);
     paramater.add("id",12345);
     
     var result = XDB.Main.GetData<User>("get_user_by_id",parameters);
-
+```
+	
 **Handle Zero Row / Custom Error**
 
 When you try retrieve data from database if returned row count is zero then result will be null. if you want to handle zero with custom handler you can use as in example.
