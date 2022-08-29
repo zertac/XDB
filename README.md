@@ -67,18 +67,18 @@ call with parameters
 When you try retrieve data from database if returned row count is zero then result will be null. if you want to handle zero with custom handler you can use as in example.
 
 ```cs
-> var result = XDB.Main.GetData<List<User>>("get_users", null, (error)
-> =>
->     {
->         if (error.Error == -1)
->         {
->             Console.WriteLine("no data found");
->         }
->         else
->         {
-	>             	Console.WriteLine("Error No : " + error.Error + " Description : ", error.Description);
->         }
->     });
+var result = XDB.Main.GetData<List<User>>("get_users", null, (error)
+=>
+     {
+         if (error.Error == -1)
+         {
+             Console.WriteLine("no data found");
+         }
+         else
+         {
+             Console.WriteLine("Error No : " + error.Error + " Description : ", error.Description);
+         }
+    });
 ```
 	
 **Define Custom Error Declaration Stored Procedure**
