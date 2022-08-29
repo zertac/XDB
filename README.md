@@ -56,7 +56,7 @@ or return Single Row
 ```
 call with parameters
 ```cs
-    var paramters = new Dictionary(string,object);
+   var parameters = new Dictionary<string,object>();
     paramater.add("id",12345);
     
     var result = XDB.Main.GetData<User>("get_user_by_id",parameters);
@@ -66,6 +66,7 @@ call with parameters
 
 When you try retrieve data from database if returned row count is zero then result will be null. if you want to handle zero with custom handler you can use as in example.
 
+```cs
 > var result = XDB.Main.GetData<List<User>>("get_users", null, (error)
 > =>
 >     {
@@ -78,35 +79,45 @@ When you try retrieve data from database if returned row count is zero then resu
 	>             	Console.WriteLine("Error No : " + error.Error + " Description : ", error.Description);
 >         }
 >     });
-
+```
+	
 **Define Custom Error Declaration Stored Procedure**
 Just put this code inside your stored procedure and return ERROR and DESCRIPTION fields.
 
-> Select 1 AS ERROR, "user not found" AS DESCRIPTION;
-
+```cs
+Select 1 AS ERROR, "user not found" AS DESCRIPTION;
+```
+	
 **Using Local Cache**
 This option when you execute db command then data will retrieve from database and whole data will save on the memory. When you execute second time same command by key, data will return from memory until CacheTimeout;
 
 **Configure Cache**
+```cs
 XDBConfigurator.UseCache = true;
 XDBConfigurator.CacheTimeout = 3; //minute
+```
+	
+**1th Call** 
+```cs
+var result = XDB.Main.GetData<User>("get_user"); // Data will
+```
+retrieve from database
 
-> **1th Call** 
-> var result = XDB.Main.GetData<User>("get_user"); // Data will
-> retrieve from database
-> 
-> **2th Call**
-> var result = XDB.Main.GetData<User>("get_user"); // Data will
-> retrieve from memory
+
+**2th Call**
+```cs
+var result = XDB.Main.GetData<User>("get_user"); // Data will
+```
+retrieve from memory
 
 **Flush Cache**
-
-    XDB.Main.FlushCache();
-
+```cs
+XDB.Main.FlushCache();
+```
 Example Database Struct
 
-![enter image description here](https://github.com/zertac/XDB/blob/main/Screenshots/db.jpg)
+![](https://github.com/zertac/XDB/blob/main/Screenshots/db.jpg)
 
-![enter image description here](https://github.com/zertac/XDB/blob/main/Screenshots/pr1.jpg)
+![](https://github.com/zertac/XDB/blob/main/Screenshots/pr1.jpg)
 
-![enter image description here](https://github.com/zertac/XDB/blob/main/Screenshots/pr2.jpg)
+![](https://github.com/zertac/XDB/blob/main/Screenshots/pr2.jpg)
